@@ -1,0 +1,29 @@
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(../font/youmurdererbb_reg.ttf);
+}
+
+body {
+    background-image: url(../images/dark_wall.png);
+}
+
+.img-c {
+    display:block;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.jumbotron {
+    display: block;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+p {
+    font-family: myFirstFont;
+    font-size: 40px;
+    color: rgb(200, 18, 18);
+    text-align: center;
+}

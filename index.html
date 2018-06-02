@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hangman</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <img class="img-c" src="images/header.png" alt="header">
+
+    <div class="jumbotron col-sm-8">
+        <p>Press any key to get started!</p>
+        <p>You just pressed <span id="user-key"><strong>_</strong></span>.</p>
+        <p>Wins</p>
+        <p>Current Word</p>
+        <p><span id="placeholder"></span></p>
+        <p>Number of guesses remaining:</p>
+        <p></p>
+        <p>Letters already guessed:</p>
+        <p></p>
+        <img class="img-c" src="images/body.png" alt="">
+    </div>
+
+
+    <script type="text/javascript">
+    // Setting the words for the hangman game.
+        var wordList = ["espionage", "mnemonic", "megahertz", "xylophone", "zigzagging", "rickshaw", "kilobyte", "daiquiri", "rhubarb", "wyvern"];
+
+    // Randomly selecting a word from the list.
+        var selection = wordList[Math.floor(Math.random() * wordList.length)];
+        var placeholder = "";
+        // var currentWord = 0;
+        // var words = wordList[currentWord];
+        // var wordLength = selection.length;
+        console.log(selection);
+
+        for (var i=0; i<selection.length; i++) {
+        placeholder = placeholder + "_";
+        }
+
+        document.getElementById("placeholder").innerHTML = placeholder;
+
+    // Setting up the onKey event for user selection.
+        var userGuess = document.getElementById("user-key");
+
+        document.onkeyup = function (event) {
+            userGuess.textContent = event.key;
+            console.log();
+        }
+
+    // Pushing user selection in to wrongSelect array.
+        var wrongSelect = [];
+
+        wrongSelect.push(userGuess);
+        console.log(wrongSelect);
+
+    // Setting up the availableGuess counter. 
+        // var availableGuess = 10;
+
+        // if (userGuess !== ?????) {
+        //     availableGuess = availableGuess - 1;
+        // };
+    
+    </script> 
+</body>
+</html>
