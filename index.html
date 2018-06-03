@@ -17,56 +17,72 @@
     <div class="jumbotron col-sm-8">
         <p>Press any key to get started!</p>
         <p>You just pressed <span id="user-key"><strong>_</strong></span>.</p>
-        <p>Wins</p>
+        <p>Wins <span id="wins"></span></p>
         <p>Current Word</p>
         <p><span id="placeholder"></span></p>
         <p>Number of guesses remaining:</p>
         <p></p>
         <p>Letters already guessed:</p>
-        <p></p>
+        <p><span id="wrong-select"></span></p>
         <img class="img-c" src="images/body.png" alt="">
     </div>
 
 
     <script type="text/javascript">
-    // Setting the words for the hangman game.
+
+    function newGame() {
+    // Starting a new game and selecting the word for the hangman game.
         var wordList = ["espionage", "mnemonic", "megahertz", "xylophone", "zigzagging", "rickshaw", "kilobyte", "daiquiri", "rhubarb", "wyvern"];
 
-    // Randomly selecting a word from the list.
+    // Randomly selecting a word from the list, and setting placeholder for the length of the word.
         var selection = wordList[Math.floor(Math.random() * wordList.length)];
         var placeholder = "";
-        // var currentWord = 0;
-        // var words = wordList[currentWord];
-        // var wordLength = selection.length;
         console.log(selection);
 
         for (var i=0; i<selection.length; i++) {
-        placeholder = placeholder + "_";
+            placeholder = placeholder + "_";
+            document.getElementById("placeholder").innerHTML = placeholder;
         }
-
-        document.getElementById("placeholder").innerHTML = placeholder;
-
     // Setting up the onKey event for user selection.
         var userGuess = document.getElementById("user-key");
+        var wrongSelect = [];
+        var availableGuess = 10;
 
         document.onkeyup = function (event) {
             userGuess.textContent = event.key;
-            console.log();
-        }
 
-    // Pushing user selection in to wrongSelect array.
-        var wrongSelect = [];
+            for (var check = 0; check < selection.length; check++) {
+                if (userGuess === selection[check]) {
+                    var sliceEnd = check * 2
+                    var sliceCheck = sliceEnd + 1
+                    stats.placeholder = stats.placeholder.slice(0, sliceEnd) + userGuess + stats.placeholder.slice(sliceCheck);
+                    console.log(stats.placeholder);
+                    document.getElementById("placeholder").innerHTML = stats.placeholder;
+                }
+            }
 
-        wrongSelect.push(userGuess);
-        console.log(wrongSelect);
+            // for (var i=0; i<selection.length; i++) {
+            //     if (userGuess.value === selection.charAt(i)) {
+            //         var correct = selection.charAt(i).replace(/_/g, userGuess.value);
+            //     }
+            console.log(placeholder);
+            }
 
-    // Setting up the availableGuess counter. 
-        // var availableGuess = 10;
+    // Pushing user selection in to wrongSelect array and reducing availableGuess counter.
 
-        // if (userGuess !== ?????) {
-        //     availableGuess = availableGuess - 1;
-        // };
+            // else {
+            //     wrongSelect.push(userGuess);
+            //     availableGuess = availableGuess - 1;
+            //     document.getElementById("wrong-select").innerHTML = wrongSelect;
+            //     console.log(wrongSelect);
+            // }
     
+    // If user guesses all the correct letters in the word, send alert, and add win to score. 
+        
+}
+
+    newGame();
+
     </script> 
 </body>
 </html>
