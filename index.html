@@ -30,7 +30,7 @@
 
     <script type="text/javascript">
 
-    function newGame() {
+
     // Starting a new game and selecting the word for the hangman game.
         var wordList = ["espionage", "mnemonic", "megahertz", "xylophone", "zigzagging", "rickshaw", "kilobyte", "daiquiri", "rhubarb", "wyvern"];
 
@@ -51,21 +51,14 @@
         document.onkeyup = function (event) {
             userGuess.textContent = event.key;
 
-            for (var check = 0; check < selection.length; check++) {
-                if (userGuess === selection[check]) {
-                    var sliceEnd = check * 2
+            for (var i = 0; i < selection.length; i++) {
+                if (event.key === selection[i]) {
+                    var sliceEnd = i 
                     var sliceCheck = sliceEnd + 1
-                    stats.placeholder = stats.placeholder.slice(0, sliceEnd) + userGuess + stats.placeholder.slice(sliceCheck);
-                    console.log(stats.placeholder);
-                    document.getElementById("placeholder").innerHTML = stats.placeholder;
+                    placeholder = placeholder.slice(0, sliceEnd) + event.key + placeholder.slice(sliceCheck);
+                    console.log(placeholder);
+                    document.getElementById("placeholder").innerHTML = placeholder;
                 }
-            }
-
-            // for (var i=0; i<selection.length; i++) {
-            //     if (userGuess.value === selection.charAt(i)) {
-            //         var correct = selection.charAt(i).replace(/_/g, userGuess.value);
-            //     }
-            console.log(placeholder);
             }
 
     // Pushing user selection in to wrongSelect array and reducing availableGuess counter.
@@ -80,8 +73,6 @@
     // If user guesses all the correct letters in the word, send alert, and add win to score. 
         
 }
-
-    newGame();
 
     </script> 
 </body>
