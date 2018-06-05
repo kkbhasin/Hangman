@@ -47,30 +47,32 @@
         var userGuess = document.getElementById("user-key");
         var wrongSelect = [];
         var availableGuess = 10;
+        var totalGuess = 0;
 
         document.onkeyup = function (event) {
             userGuess.textContent = event.key;
-
-            for (var i = 0; i < selection.length; i++) {
-                if (event.key === selection[i]) {
-                    var sliceEnd = i 
-                    var sliceCheck = sliceEnd + 1
-                    placeholder = placeholder.slice(0, sliceEnd) + event.key + placeholder.slice(sliceCheck);
-                    console.log(placeholder);
-                    document.getElementById("placeholder").innerHTML = placeholder;
+            if (availableGuess > totalGuess) {
+                for (var i = 0; i < selection.length; i++) {
+                    if (availableGuess > totalGuess) {
+                        if (event.key === selection[i]) {
+                            placeholder = placeholder.slice(0, i) + event.key + placeholder.slice(i+1);
+                            console.log(placeholder);
+                            document.getElementById("placeholder").innerHTML = placeholder;
+                        }
+                    }
                 }
+
+                        if (event.key !== selection[i]) {
+                            wrongSelect.push(event.key);
+                            availableGuess = availableGuess - 1;
+                            document.getElementById("wrong-select").innerHTML = wrongSelect;
+                            console.log(wrongSelect);
+                        }
             }
-
-    // Pushing user selection in to wrongSelect array and reducing availableGuess counter.
-
-            // else {
-            //     wrongSelect.push(userGuess);
-            //     availableGuess = availableGuess - 1;
-            //     document.getElementById("wrong-select").innerHTML = wrongSelect;
-            //     console.log(wrongSelect);
-            // }
-    
-    // If user guesses all the correct letters in the word, send alert, and add win to score. 
+            else {
+                alert ("You lose.");
+                document.location.reload();
+            }
         
 }
 
