@@ -53,6 +53,7 @@
         var placeholder;
         var userGuess = document.getElementById("user-key");
         var wrongSelect = [];
+        var correctSelect = [];
         var availableGuess = 10;
         var totalGuess = 0;
         var guessLength = 0;
@@ -66,14 +67,15 @@
             wrongSelect = [];
             availableGuess = 10;
             totalGuess = 0;
-            guessLength = 0;    
+            guessLength = 0;
+            correctSelect = [];
             for (var i = 0; i < selection.length; i++) {
                 placeholder = placeholder + "_";
                 document.getElementById("placeholder").innerHTML = placeholder;
             }
             x();
         }
- 
+
 
         // Setting up the onKey event for user selection.
 
@@ -83,6 +85,10 @@
             }
             else {
                 userGuess.textContent = event.key;
+                if (wrongSelect.indexOf(event.key) > -1 || correctSelect.indexOf(event.key) > -1) {
+                    alert("You have already selected this key");
+                    return;
+                }
                 if (availableGuess > totalGuess) {
                     console.log(event.keyCode);
                     if (event.keyCode >= 65 && event.keyCode <= 90) {
@@ -90,6 +96,7 @@
                         var isWrongGuess = true;
                         for (var i = 0; i < selection.length; i++) {
                             if (event.key === selection[i]) {
+                                correctSelect.push(event.key);
                                 placeholder = placeholder.slice(0, i) + event.key + placeholder.slice(i + 1);
                                 document.getElementById("placeholder").innerHTML = placeholder;
                                 guessLength++;
@@ -97,7 +104,7 @@
                                 isWrongGuess = false;
                             }
                         }
-                        if (isWrongGuess) {
+                        if (isWrongGuess && !(wrongSelect.indexOf(event.key) > -1)) {
                             wrongSelect.push(event.key);
                             availableGuess = availableGuess - 1;
                             document.getElementById("wrong-select").innerHTML = wrongSelect;
@@ -123,7 +130,7 @@
             }
         }
 
-      document.onkeyup = x;
+        document.onkeyup = x;
 
         newGame();
 
