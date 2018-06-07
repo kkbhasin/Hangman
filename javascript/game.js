@@ -70,6 +70,8 @@
                             alert("Congrats, you have survived!");
                             wins++;
                             document.getElementById("wins").innerHTML = wins;
+                            document.getElementById("wrong-select").innerHTML = "";
+                            document.getElementById("available-guess").innerHTML = "";
                             newGame();
                         }
                     }
@@ -79,6 +81,8 @@
                 }
                 else {
                     alert("You lose. You dead, muhuhahaha!");
+                    document.getElementById("wrong-select").innerHTML = "";
+                    document.getElementById("available-guess").innerHTML = "";
                     newGame();
                 }
             }
