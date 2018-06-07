@@ -72,6 +72,7 @@
                             document.getElementById("wins").innerHTML = wins;
                             document.getElementById("wrong-select").innerHTML = "";
                             document.getElementById("available-guess").innerHTML = "";
+                            document.getElementById("user-key").innerHTML = "";
                             newGame();
                         }
                     }
@@ -83,6 +84,7 @@
                     alert("You lose. You dead, muhuhahaha!");
                     document.getElementById("wrong-select").innerHTML = "";
                     document.getElementById("available-guess").innerHTML = "";
+                    document.getElementById("user-key").innerHTML = "";
                     newGame();
                 }
             }
