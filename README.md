@@ -2,6 +2,8 @@
 
 Like the traditional version of hangman. Choose a letter by pressing a key. You can only select from the letters a - z (keyCode 65 - 90). If you guess correctly, your letter will replace the _. If you guess incorrectly, your guess will show in a wrong guess section below the word. 
 
+Follow the link: https://kkbhasin.github.io/Hangman/
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
